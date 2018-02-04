@@ -48,9 +48,11 @@ no judge plz
 			}
 		</style>
 		<script>
+			var map;
+			
 			function initMap()
 			{
-				var map = new google.maps.Map(document.getElementById('map'), {
+				map = new google.maps.Map(document.getElementById('map'), {
 					zoom: 8,
 					center: {lat: -34.397, lng: 150.644}
 				});
@@ -90,8 +92,8 @@ no judge plz
 			{
 				//Hard coding the markers, but desperate times call for desperate measures
 				//Durante's No Frills: 43.7582503,-79.5215085
-				//Apirami Supermarket: 43.7653894,-79.497503
-				//Metro: 43.7659948,-79.5016599
+				//Apirami Supermarket: 43.7506782,-79.4893265
+				//Metro: 43.7584995,-79.4559878
 				var marker1 = new google.maps.Marker(
 				{
 					position: {lat: 43.7582503, lng: -79.5215085},
@@ -108,7 +110,7 @@ no judge plz
 				
 				var marker2 = new google.maps.Marker(
 				{
-					position: {lat: 43.7653894, lng: -79.497503},
+					position: {lat: 43.7506782, lng: -79.4893265},
 					map: map,
 					title: "Apirami Supermarket",
 					phone: "(416) 638-2318",
@@ -122,7 +124,7 @@ no judge plz
 				
 				var marker3 = new google.maps.Marker(
 				{
-					position: {lat: 43.7659948, lng: -79.5016599},
+					position: {lat: 43.7584995, lng: -79.4559878},
 					map: map,
 					title: "Metro",
 					phone: "(416) 636-5136",
@@ -137,8 +139,24 @@ no judge plz
 			
 			function openInfoWindow(map, marker)
 			{
-				var infowindow = new google.maps.InfoWindow({ content: "<strong>" + marker.title + "</strong><div>" + marker.phone + "</div>"});
+				var infowindow = new google.maps.InfoWindow({ content: "<strong>" + marker.title + "</strong><div>" + marker.phone + "</div><div><a href='inventory.html'> Inventory </a></div>"});
 				infowindow.open(map, marker);
+			}
+			
+			function changeZoom(zoomLevel)
+			{
+				if (zoomLevel === "1km")
+				{
+					map.setZoom(15);
+				}
+				else if (zoomLevel === "2km")
+				{
+					map.setZoom(14);
+				}
+				else if (zoomLevel === "5km")
+				{
+					map.setZoom(12);
+				}
 			}
 
 		</script>
@@ -154,8 +172,9 @@ no judge plz
 		</div>
 		
 		<div id="map"></div>
-		Filter by radius:
-		<select name="radius" id="radius-menu">
+		<label for="radius-menu"> Filter by radius: </label>
+		<select name="radius" id="radius-menu" onchange="changeZoom(value)">
+			<option selected disabled> Filter by radius: </option>
 			<option value="1km"> 1 km </option>
 			<option value="2km"> 2 km </option>
 			<option value="5km"> 5 km </option>
