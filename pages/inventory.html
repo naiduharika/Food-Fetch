@@ -58,6 +58,7 @@
 		
 		.overall-box
 		{
+			min-width: 300px;
 			max-width: 300px;
 			border-radius: 5px;
 			box-shadow: 0px 0px 5px #D7E5F6;
@@ -67,6 +68,7 @@
 		
 		.box
 		{
+			min-height: 65%;
 			max-height: 65%;
 			border-radius: 5px 5px 0 0;
 			overflow: hidden;
@@ -106,6 +108,7 @@
 			right: 0;
 			padding-right: 10px;
 			padding-top: 5px;
+			padding-bottom: 20px;
 		}
 	</style>
 	
@@ -135,8 +138,6 @@
 			
 			document.getElementById(maxField).innerHTML = newMax;
 			document.getElementById(quantityField).innerHTML = newMax;
-			
-			alert("Added items to cart!");
 		}
 	</script>
 
@@ -196,7 +197,7 @@
 			</div>
 			<div class="col-md-6 col-lg-4 overall-box">
 				<div class="box">
-					<img class="img-fluid" src="../img/food/strawberry.jpeg" alt="">
+					<img class="img-fluid" src="../img/food/carrot.jpeg" alt="">
 				</div>
 				<span class="buy-panel">
 					<button type="button" class="add-subtract-button" onclick="changeQuantity('minus', 'qnt3', document.getElementById('max3').innerHTML)"> - </button>
@@ -206,7 +207,7 @@
 					<em> Store qnty: <span id="max3"> 79 </span> </em>
 				</span>
 				<span style="position:absolute; padding-left: 10px;">
-					Strawberries
+					Carrots
 					<br>
 					<em>Expires in 4 days</em>
 				</span>
@@ -234,7 +235,7 @@
 			</div>
 			<div class="col-md-6 col-lg-4 overall-box">
 				<div class="box">
-					<img class="img-fluid" src="../img/food/carrot.jpeg" alt="">
+					<img class="img-fluid" src="../img/food/strawberry.jpeg" alt="">
 				</div>
 				<span class="buy-panel">
 					<button type="button" class="add-subtract-button" onclick="changeQuantity('minus', 'qnt5', document.getElementById('max5').innerHTML)"> - </button>
@@ -244,7 +245,7 @@
 					<em> Store qnty: <span id="max5"> 23 </span> </em>
 				</span>
 				<span style="position:absolute; padding-left: 10px;">
-					Carrot
+					Strawberries
 					<br>
 					<em>Expires in 9 days</em>
 				</span>
@@ -253,18 +254,17 @@
 			</div>
 			<div class="col-md-6 col-lg-4 overall-box">
 				<div class="box">
-					<!-- it rhymes, heh -->
-					<img class="img-fluid" src="../img/food/staleBread.jpg" alt="">
+					<img class="img-fluid" src="../img/food/clemintine.jpg" alt="">
 				</div>
 				<span class="buy-panel">
 					<button type="button" class="add-subtract-button" onclick="changeQuantity('minus', 'qnt6', document.getElementById('max6').innerHTML)"> - </button>
 					<span id="qnt6"> 13 </span>
 					<button type="button" class="add-subtract-button" onclick="changeQuantity('plus', 'qnt6', document.getElementById('max6').innerHTML)"> + </button>
 					<br>
-					<em> Store qnty: <span id="max6"> 13 </span> loafs </em>
+					<em> Store qnty: <span id="max6"> 13 </span> </em>
 				</span>
 				<span style="position:absolute; padding-left: 10px;">
-					Strawberries
+					Clementines
 					<br>
 					<em>Expires in 4 days</em>
 				</span>
