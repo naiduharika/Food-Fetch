@@ -51,10 +51,25 @@
 			border: none;
 		}
 		
-		.asdf
+		.overall-box
 		{
-			height: 200px;
+			max-width: 300px;
+			border-radius: 5px;
+			box-shadow: 0px 3px 10px #D7E5F6;
+			margin: 10px;
+			padding: 0 0;
+		}
+		
+		.box
+		{
+			height: 150px;
 			overflow: hidden;
+		}
+		
+		.overlay
+		{
+			position: absolute;
+			z-index: 5;
 		}
 		
 		.add-subtract-button
@@ -69,7 +84,13 @@
 		
 		.add-to-cart
 		{
-			
+			position: absolute;
+			border-radius: 0 0 5px 5px;
+			background-color: #3FD6A9;
+			text-align: center;
+			border: none;
+			width: 100%;
+			bottom: 0;
 		}
 	</style>
 	
@@ -104,16 +125,20 @@
 	</div>
 	
 	<h3 style="margin: 0 20%; margin-top: 20px; color: #3FD6A9;"> Durante's No Frills </h3>
-	<h4 style="margin: 0 20%; color: #7f8183;"> Produce </h4>
+	<h4 style="margin: 0 20%; margin-bottom: 30px; color: #7f8183;"> Produce </h4>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6 col-lg-4">
-				<img class="img-fluid" style="overflow:hidden;" src="https://getbootstrap.com/assets/img/bootstrap-stack.png" alt="">
+			<div class="col-md-4 col-lg-4 overall-box">
+				<div class="box">
+					<img class="img-fluid" style="overflow:hidden;" src="https://getbootstrap.com/assets/img/bootstrap-stack.png" alt="">
+				</div>
 				Bananas
-				<button type="button" class="add-subtract-button" onclick="changeQuantity('minus', 'qnt1', 50)"> - </button>
-				<span id="qnt1"> 50 </span>
-				<button type="button" class="add-subtract-button" onclick="changeQuantity('plus', 'qnt1', 50)"> + </button>
+				<span style="position:absolute; right:0; top: auto;">
+					<button type="button" class="add-subtract-button" onclick="changeQuantity('minus', 'qnt1', 50)"> - </button>
+					<span id="qnt1"> 50 </span>
+					<button type="button" class="add-subtract-button" onclick="changeQuantity('plus', 'qnt1', 50)"> + </button>
+				</span>
 				<br>
 				<em>Expires in 6 days</em>
 				<br>
