@@ -60,6 +60,8 @@
 		{
 			min-width: 300px;
 			max-width: 300px;
+			min-height: 250px;
+			max-height: 250px;
 			border-radius: 5px;
 			box-shadow: 0px 0px 5px #D7E5F6;
 			margin: 10px;
@@ -74,16 +76,10 @@
 			overflow: hidden;
 		}
 		
-		.overlay
-		{
-			position: absolute;
-			z-index: 5;
-		}
-		
 		.add-subtract-button
 		{
-			height: 50px
-			width: 50px;
+			height: 40px
+			width: 40px;
 			border-radius: 50%;
 			border: none;
 			text-align: center;
@@ -107,8 +103,6 @@
 			position: absolute;
 			right: 0;
 			padding-right: 10px;
-			padding-top: 5px;
-			padding-bottom: 20px;
 		}
 	</style>
 	
@@ -159,7 +153,7 @@
 		<div class="row">
 			<div class="col-md-6 col-lg-4 overall-box">
 				<div class="box">
-					<img class="img-fluid" style="background-size:cover;" src="../img/food/bananas.png" alt="">
+					<img class="img-fluid" src="../img/food/bananas.png" alt="" style="display:block; margin:auto;"/>
 				</div>
 				<span class="buy-panel">
 					<button type="button" class="add-subtract-button" onclick="changeQuantity('minus', 'qnt1', document.getElementById('max1').innerHTML)"> - </button>
@@ -178,7 +172,7 @@
 			</div>
 			<div class="col-md-6 col-lg-4 overall-box">
 				<div class="box">
-					<img class="img-fluid" src="../img/food/chickenWings.jpg" alt="">
+					<img class="img-fluid" src="../img/food/chickenWings.jpg" alt="" style="display:block; margin:auto;"/>
 				</div>
 				<span class="buy-panel">
 					<button type="button" class="add-subtract-button" onclick="changeQuantity('minus', 'qnt2', document.getElementById('max2').innerHTML)"> - </button>
@@ -216,12 +210,12 @@
 			</div>
 			<div class="col-md-6 col-lg-4 overall-box">
 				<div class="box">
-					<img class="img-fluid" src="../img/food/apple.png" alt="">
+					<img class="img-fluid" src="../img/food/apple.png" alt=""style="display:block; margin:auto;"/>
 				</div>
 				<span class="buy-panel">
-					<button type="button" class="add-subtract-button" onclick="changeQuantity('minus', 'qnt4', document.getElementById('max4;).innerHTML)"> - </button>
+					<button type="button" class="add-subtract-button" onclick="changeQuantity('minus', 'qnt4', document.getElementById('max4').innerHTML)"> - </button>
 					<span id="qnt4"> 1243 </span>
-					<button type="button" class="add-subtract-button" onclick="changeQuantity('plus', 'qnt4', document.getElementById('max4;).innerHTML)"> + </button>
+					<button type="button" class="add-subtract-button" onclick="changeQuantity('plus', 'qnt4', document.getElementById('max4').innerHTML)"> + </button>
 					<br>
 					<em> Store qnty: <span id="max4"> 1243 </span> </em>
 				</span>
@@ -235,7 +229,7 @@
 			</div>
 			<div class="col-md-6 col-lg-4 overall-box">
 				<div class="box">
-					<img class="img-fluid" src="../img/food/strawberry.jpeg" alt="">
+					<img class="img-fluid" src="../img/food/strawberry.jpeg" alt="" style="display:block; margin:auto;"/>
 				</div>
 				<span class="buy-panel">
 					<button type="button" class="add-subtract-button" onclick="changeQuantity('minus', 'qnt5', document.getElementById('max5').innerHTML)"> - </button>
