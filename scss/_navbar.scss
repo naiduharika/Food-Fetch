@@ -13,14 +13,14 @@
       a.nav-link {
         color: $white;
         &:hover {
-          color: $primary;
+          color: $gray-700;
         }
         &:active,
         &:focus {
           color: $white;
         }
         &.active {
-          color: $primary;
+          color: $gray-700;
         }
       }
     }
@@ -53,7 +53,7 @@
       &:focus,
       &:hover {
         color: $white;
-        background: $primary;
+        background: $gray-700;
       }
     }
   }

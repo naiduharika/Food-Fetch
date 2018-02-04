@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Food Fetch - Checkout</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="../../vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/freelancer.min.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    !-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-primary fixed-top text-uppercase" id="mainNav">
+        <div class="container">
+            <img src="../../img/logo.png"> &nbsp;&nbsp;
+          <a class="navbar-brand js-scroll-trigger" href="../index.html">Food Fetch</a>
+          <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="../index.html">Locations</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="checkout.html">Checkout</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="../about.html">About</a>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+     <!-- Header -->
+     <header class="navbar"><br><br></header>
+
+    <!-- checkout Section -->
+      <section id="checkout">
+          <div class="container">
+            <div class="row">
+                    <div id="app" class="well col-lg-12">
+                      <h2>Your Cart</h2>
+                      <div class="cart_content" >
+                        <table class="table">
+                          <thead>
+                            <th colspan="2">Product</th>
+                            <th class="cart_item_qty">Quantity</th>
+                            <th class="cart_item_price">Unit Price</th>
+                            <th class="cart_item_tprice">Subtotal</th>
+                            <th> </th>
+                          </thead>
+                          <tbody>
+                            <tr v-for="(item, index) in cartData">
+                              <td class="cart_item_img"><img height="75" :src="item.imgurl" /></td>
+                              <!-- need to insert {{ item.imgurl }}  /// <img :src = "product.img" />-->
+                              <td>{{ item.title }}</td>
+                              <td class="cart_item_qty"><a class="num_minus" href="#" @click.prevent="countQty(index, -1)">-</a>
+                                <input type="text" @blur="checkQty($event.target.value, index)" onkeypress="return event.charCode >= 48 && event.charCode <= 57" @focus="setTmpQty(index)" maxlength="3" v-model="item.qty"/><a class="num_plus" href="#" @click.prevent="countQty(index, 1)">+</a>
+                              </td>
+                              <td class="cart_item_price" >${{ item.price }}</td>
+                              <td class="cart_item_tprice">${{ item.price * item.qty }}</td>
+                              <td><a class="list_item_del" href="#" @click.prevent="delCartItem($event.currentTarget, index)"><i class="fa fa-trash-o"></i></a></td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr v-if="cartData.length > 0">
+                              <td colspan="4">Total</td>
+                              <td class="cart_item_tprice">${{ totalMoney }}</td>
+                              <td> </td>
+                            </tr>
+                            <tr v-else="v-else">
+                              <td colspan="6">Empty shopping cart :'(</td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-10 ml-auto">
+                              <div class="pull-right mt-4">
+                                <a class="btn btn-primary btn-xl" href="billing.html"> Checkout </a>
+                              </div>
+                          </div>
+                          <div class="col-md-1 ml-auto">
+                              <div class="left mt-4">
+                                <button class="btn btn-primary btn-xl" @click.prevent="resetData()" :disabled="cartData.length > 0"><i class="fa fa-refresh"></i></button>
+                              </div>
+                          </div>
+                      </div>
+                      </p>
+                    </div>
+                    <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+                    <script >(function() {
+                      var vm;
+
+                      window.initData = function() {
+                        return {
+                          cartData: [
+                            {
+                              id: 1,
+                              title: "Apples",
+                              imgurl : '../../img/Apples.png',
+                              price: 0.50,
+                              qty: 50,
+                              stock: 60
+                            }, {
+                              id:2,
+                              title: "Strawberries",
+                              imgurl : '../../img/Strawberries.png',
+                              price: 1.00,
+                              qty: 20,
+                              stock: 35
+                            }, {
+                              id: 3,
+                              title: "Carrots",
+                              imgurl : '../../img/Carrots.png',
+                              price: 0.10,
+                              qty: 100,
+                              stock: 130
+                            }, {
+                              id: 4,
+                              title: "Bananas",
+                              imgurl : '../../img/Bananas.png',
+                              price: 0.25,
+                              qty: 40,
+                              stock: 50
+                            }
+                          ],
+                          totalMoney: 0,
+                          tmpQty: 0
+                        };
+                      };
+
+                      vm = new Vue({
+                        el: "#app",
+                        methods: {
+                          setTmpQty: function(index) {
+                            return this.tmpQty = this.cartData[index].qty;
+                          },
+                          checkQty: function(value, index) {
+                            if (value < 1 || (value = "" || value > this.cartData[index].stock)) {
+                              return this.cartData[index].qty = this.tmpQty;
+                            }
+                          },
+                          countQty: function(index, qtyNum) {
+                            if (qtyNum === -1 && this.cartData[index].qty <= 1) {
+                              return;
+                            }
+                            if (qtyNum === 1 && this.cartData[index].qty >= this.cartData[index].stock) {
+                              return;
+                            }
+                            this.cartData[index].qty = parseInt(this.cartData[index].qty) + qtyNum;
+                            this.setTmpQty(index);
+                            return this.countTotal();
+                          },
+                          countTotal: function() {
+                            var me;
+                            me = this;
+                            me.totalMoney = 0;
+                            return $.each(this.cartData, function(index, item) {
+                              return me.totalMoney += item.price * item.qty;
+                            });
+                          },
+                          delCartItem: function(target, index) {
+                            var me;
+                            me = this;
+                            $(target).parents('tr').fadeOut(300, function() {
+                              $(this).fadeIn();
+                              me.cartData.splice(index, 1);
+                              return me.countTotal();
+                            });
+                          },
+                          resetData: function() {
+                            Object.assign(this.$data, initData());
+                            return this.countTotal();
+                          }
+                        },
+                        mounted: function() {
+                          return this.countTotal();
+                        },
+                        data: function() {
+                          return initData();
+                        }
+                      });
+
+                    }).call(this);
+                  </script>
+            </div>
+          </div>
+        </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="py-4 text-center">
+        <div class="container">
+          <small>Copyright &copy; Food Fetch 2018</small>
+        </div>
+      </div>
+    </footer>
+
+      <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+      <div class="scroll-to-top d-lg-none position-fixed ">
+        <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+          <i class="fa fa-chevron-up"></i>
+        </a>
+      </div>
+
+      <!-- Bootstrap core JavaScript -->
+      <script src="../../vendor/jquery/jquery.min.js"></script>
+      <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+      <!-- Plugin JavaScript -->
+      <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+      <script src="../../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+      <!-- Contact Form JavaScript -->
+      <script src="../../js/jqBootstrapValidation.js"></script>
+      <script src="../../js/contact_me.js"></script>
+
+      <!-- Custom scripts for this template -->
+      <script src="../../js/freelancer.min.js"></script>
+
+    </body>
+
+  </html>
