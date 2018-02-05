@@ -30,6 +30,6 @@ We learned in-depth HTML5.
 The next step for Food Fetch is to branch out and reach more individuals that do not rely on homeless shelters or food agencies. Furthermore we want to work with other retailers that produce product waste that doesn’t pertain to food.
 
 # Built With
-html5
-css3
-javascript
+* html5
+* css3
+* javascript
